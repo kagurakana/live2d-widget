@@ -1,3 +1,5 @@
+
+
 /*
  * Live2D Widget
  * https://github.com/stevenjoezhang/live2d-widget
@@ -28,7 +30,7 @@ function loadWidget(config) {
 		</div>`);
 	// https://stackoverflow.com/questions/24148403/trigger-css-transition-on-appended-element
 	setTimeout(() => {
-		document.getElementById("waifu").style.bottom = 0;
+		document.getElementById("waifu").style.bottom = -15px;
 	}, 0);
 
 	function randomSelection(obj) {
@@ -99,7 +101,7 @@ function loadWidget(config) {
 
 	(function welcomeMessage() {
 		let text;
-		if (location.pathname === "/") { // 如果是主页
+		if (location.pathname === "/home"||"/") { // 如果是主页
 			let now = new Date().getHours();
 			if (now > 5 && now <= 7) text = "早上好！一日之计在于晨，美好的一天就要开始了。";
 			else if (now > 7 && now <= 11) text = "上午好！工作顺利嘛，不要久坐，多起来走动走动哦！";
@@ -169,7 +171,7 @@ function loadWidget(config) {
 					window.addEventListener("mouseover", event => {
 						if (!event.target.matches(tips.selector)) return;
 						let text = randomSelection(tips.text);
-						text = text.replace("{text}", event.target.innerText);
+						text = text.replace("{text}", event.target.innerText.split('\n')[0]);
 						showMessage(text, 4000, 8);
 					});
 				});
